@@ -1,0 +1,7 @@
+**LISA Traffic Light Dataset** is a dataset for an object detection task. It is used in the automotive industry. 
+
+The dataset consists of 43016 images with 219832 labeled objects belonging to 14 different classes including *go*, *stop*, *go traffic light*, and other: *stop traffic light*, *stop left*, *stop left traffic light*, *go left*, *go left traffic light*, *warning*, *warning traffic light*, *warning left*, *warning left traffic light*, *go forward*, and *go forward traffic light*.
+
+Images in the LISA Traffic Light dataset have bounding box annotations. There are 6626 (15% of the total) unlabeled images (i.e. without annotations). There are 2 splits in the dataset: *test* (22481 images) and *train* (20535 images). Alternatively, the dataset could be split into 2 times of day: ***day*** (24988 images) and ***night*** (18028 images). Additionally, every image marked with its ***sequence*** and ***track frame number*** tags. The dataset was released in 2016 by the <span style="font-weight: 600; color: grey; border-bottom: 1px dashed #d3d3d3;">BEUMER Group, Denmark</span>, <span style="font-weight: 600; color: grey; border-bottom: 1px dashed #d3d3d3;">Aalborg University, Denmark</span>, and <span style="font-weight: 600; color: grey; border-bottom: 1px dashed #d3d3d3;">University of California, USA</span>.
+
+<img src="https://github.com/dataset-ninja/lisa-traffic-light/raw/main/visualizations/poster.png">
