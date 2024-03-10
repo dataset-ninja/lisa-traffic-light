@@ -26,10 +26,9 @@ def convert_and_upload_supervisely_project(
     batch_size = 30
 
     ds_name_to_folders = {
-        "train": ["dayTrain", "nightTrain"],
-        "test": ["daySequence1", "daySequence2", "nightSequence1", "nightSequence1"],
+        # "train": ["dayTrain", "nightTrain"],
+        "test": ["daySequence1", "daySequence2", "nightSequence1", "nightSequence2"],
     }
-
 
     def create_ann(image_path):
         labels = []
@@ -77,7 +76,6 @@ def convert_and_upload_supervisely_project(
             img_size=(img_height, img_wight), labels=labels, img_tags=[seq, time_tag, frame_tag]
         )
 
-
     go = sly.ObjClass("go", sly.Rectangle)
     stop = sly.ObjClass("stop", sly.Rectangle)
     stop_left = sly.ObjClass("stop left", sly.Rectangle)
@@ -121,7 +119,6 @@ def convert_and_upload_supervisely_project(
 
     all_classes = list(name_to_class.values()) + list(name_to_class_traff.values())
 
-
     project = api.project.create(workspace_id, project_name, change_name_if_conflict=True)
     meta = sly.ProjectMeta(
         obj_classes=all_classes,
@@ -146,7 +143,9 @@ def convert_and_upload_supervisely_project(
             if ds_name == "train":
                 for subfolder in os.listdir(curr_data_path):
                     images_path = os.path.join(curr_data_path, subfolder, "frames")
-                    ann_path_traff = os.path.join(curr_ann_path, subfolder, "frameAnnotationsBOX.csv")
+                    ann_path_traff = os.path.join(
+                        curr_ann_path, subfolder, "frameAnnotationsBOX.csv"
+                    )
                     ann_path = os.path.join(curr_ann_path, subfolder, "frameAnnotationsBULB.csv")
                     im_name_to_data_traff = defaultdict(list)
                     if file_exists(ann_path_traff):
@@ -156,7 +155,9 @@ def convert_and_upload_supervisely_project(
                                 if idx == 0:
                                     continue
                                 curr_data = row[0].split(";")
-                                im_name_to_data_traff[curr_data[0].split("/")[1]].append(curr_data[1:])
+                                im_name_to_data_traff[curr_data[0].split("/")[1]].append(
+                                    curr_data[1:]
+                                )
 
                     im_name_to_data = defaultdict(list)
                     if file_exists(ann_path):
@@ -170,7 +171,9 @@ def convert_and_upload_supervisely_project(
 
                         images_names = os.listdir(images_path)
 
-                        progress = sly.Progress("Create dataset {}".format(ds_name), len(images_names))
+                        progress = sly.Progress(
+                            "Create dataset {}".format(ds_name), len(images_names)
+                        )
 
                         for images_names_batch in sly.batched(images_names, batch_size=batch_size):
                             img_pathes_batch = [
@@ -190,6 +193,7 @@ def convert_and_upload_supervisely_project(
 
             else:
                 images_path = os.path.join(curr_data_path, "frames")
+                ann_path_traff = os.path.join(curr_ann_path, "frameAnnotationsBOX.csv")
                 ann_path = os.path.join(curr_ann_path, "frameAnnotationsBOX.csv")
                 im_name_to_data_traff = defaultdict(list)
                 if file_exists(ann_path_traff):
@@ -217,7 +221,8 @@ def convert_and_upload_supervisely_project(
 
                     for images_names_batch in sly.batched(images_names, batch_size=batch_size):
                         img_pathes_batch = [
-                            os.path.join(images_path, image_name) for image_name in images_names_batch
+                            os.path.join(images_path, image_name)
+                            for image_name in images_names_batch
                         ]
 
                         img_infos = api.image.upload_paths(
@@ -229,6 +234,5 @@ def convert_and_upload_supervisely_project(
                         api.annotation.upload_anns(img_ids, anns)
 
                         progress.iters_done_report(len(images_names_batch))
-
 
     return project
