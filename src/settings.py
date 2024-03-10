@@ -13,59 +13,97 @@ from dataset_tools.templates import (
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = None
-PROJECT_NAME_FULL: str = None
+PROJECT_NAME: str = "LISA Traffic Light"
+PROJECT_NAME_FULL: str = "LISA Traffic Light Dataset"
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
 ##################################
 # * After uploading to instance ##
 ##################################
-LICENSE: License = None
-APPLICATIONS: List[Union[Industry, Domain, Research]] = None
-CATEGORY: Category = None
+LICENSE: License = License.CC_BY_NC_SA_4_0()
+APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.Automotive()]
+CATEGORY: Category = Category.SelfDriving()
 
-CV_TASKS: List[CVTask] = None
-ANNOTATION_TYPES: List[AnnotationType] = None
+CV_TASKS: List[CVTask] = [CVTask.ObjectDetection()]
+ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.ObjectDetection()]
 
 RELEASE_DATE: Optional[str] = None  # e.g. "YYYY-MM-DD"
 if RELEASE_DATE is None:
-    RELEASE_YEAR: int = None
+    RELEASE_YEAR: int = 2016
 
-HOMEPAGE_URL: str = None
+HOMEPAGE_URL: str = "https://www.kaggle.com/datasets/mbornoe/lisa-traffic-light-dataset"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = None
+PREVIEW_IMAGE_ID: int = 15219081
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
-GITHUB_URL: str = None
+GITHUB_URL: str = "https://github.com/dataset-ninja/lisa-traffic-light"
 # URL to GitHub repo on dataset ninja (e.g. "https://github.com/dataset-ninja/some-dataset")
 
 ##################################
 ### * Optional after uploading ###
 ##################################
-DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = None
+DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = (
+    "https://www.kaggle.com/datasets/mbornoe/lisa-traffic-light-dataset/download?datasetVersionNumber=2"
+)
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
-CLASS2COLOR: Optional[Dict[str, List[str]] | Literal["predefined"]] = "predefined"
+CLASS2COLOR: Optional[Dict[str, List[str]] or Literal["predefined"]] = {
+    "go traffic light": [230, 25, 75],
+    "stop traffic light": [60, 180, 75],
+    "stop left traffic light": [255, 225, 25],
+    "warning traffic light": [0, 130, 200],
+    "go left traffic light": [245, 130, 48],
+    "warning left traffic light": [145, 30, 180],
+    "go forward traffic light": [70, 240, 240],
+    "go": [240, 50, 230],
+    "stop": [210, 245, 60],
+    "top left": [250, 190, 212],
+    "warning": [0, 128, 128],
+    "go left": [220, 190, 255],
+    "warning left": [170, 110, 40],
+    "go forward": [255, 250, 200],
+}
 # If specific colors for classes are needed, fill this dict (e.g. {"class1": [255, 0, 0], "class2": [0, 255, 0]})
 
 # If you have more than the one paper, put the most relatable link as the first element of the list
 # Use dict key to specify name for a button
-PAPER: Optional[Union[str, List[str], Dict[str, str]]] = None
+PAPER: Optional[Union[str, List[str], Dict[str, str]]] = (
+    "https://vbn.aau.dk/ws/portalfiles/portal/224024952/main"
+)
 BLOGPOST: Optional[Union[str, List[str], Dict[str, str]]] = None
-REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = {
-    "GitHub": "some_link_to_repo_if_exists"
-}
+REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = None
 
 CITATION_URL: Optional[str] = None
-AUTHORS: Optional[List[str]] = None
-AUTHORS_CONTACTS: Optional[List[str]] = None
+AUTHORS: Optional[List[str]] = [
+    "Jensen Morten Born",
+    "Philipsen Mark Philip",
+    "Mogelmose Andreas",
+    "; Moeslund Thomas",
+    "Trivedi Mohan",
+]
+AUTHORS_CONTACTS: Optional[List[str]] = [
+    "mpph@create.aau.dk",
+    "anmo@create.aau.dk",
+    "tbm@create.aau.dk",
+]
 
-ORGANIZATION_NAME: Optional[Union[str, List[str]]] = None
-ORGANIZATION_URL: Optional[Union[str, List[str]]] = None
+ORGANIZATION_NAME: Optional[Union[str, List[str]]] = [
+    "BEUMER Group, Denmark",
+    "Aalborg University, Denmark",
+    "University of California, USA",
+]
+ORGANIZATION_URL: Optional[Union[str, List[str]]] = [
+    "https://www.beumergroup.com/l/beumer-as-denmark/",
+    "https://www.aau.dk/",
+    "https://www.hult.edu/",
+]
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
-SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = None
+SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
+    "times of day": ["day", "night"],
+    "__POSTTEXT__": "Additionally, every image marked with its ***sequence*** and ***track frame number*** tags",
+}
 TAGS: Optional[
     List[Literal["multi-view", "synthetic", "simulation", "multi-camera", "multi-modal"]]
 ] = None
