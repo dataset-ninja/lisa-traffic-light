@@ -13,7 +13,7 @@ from dataset_tools.templates import (
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = "LISA Traffic Light_test"
+PROJECT_NAME: str = "LISA Traffic Light"
 PROJECT_NAME_FULL: str = "LISA Traffic Light Dataset"
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
