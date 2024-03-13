@@ -1,11 +1,16 @@
 If you make use of the LISA Traffic Light data, please cite the following reference:
 
 ``` bibtex 
-@dataset{LISA Traffic Light,
-  author={Jensen Morten Born and Philipsen Mark Philip and Mogelmose Andreas and ; Moeslund Thomas and Trivedi Mohan},
-  title={LISA Traffic Light Dataset},
+@article{jensen2016vision,
+  title={Vision for looking at traffic lights: Issues, survey, and perspectives},
+  author={Jensen, Morten Born{\o} and Philipsen, Mark Philip and M{\o}gelmose, Andreas and Moeslund, Thomas Baltzer and Trivedi, Mohan Manubhai},
+  journal={IEEE Transactions on Intelligent Transportation Systems},
+  volume={17},
+  number={7},
+  pages={1800--1815},
   year={2016},
-  url={https://www.kaggle.com/datasets/mbornoe/lisa-traffic-light-dataset}
+  doi={10.1109/TITS.2015.2509509},
+  publisher={IEEE}
 }
 ```
 
