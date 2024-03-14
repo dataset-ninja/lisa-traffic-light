@@ -1,6 +1,6 @@
 Dataset **LISA Traffic Light** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](Set 'HIDE_DATASET=False' to generate download link)
+ [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/V/O/hv/5riDaFt3Z30WmdwEAgVOj3AQXnjKHXH1CmOgLMXW2Oqy4h88lGq8LIV883ddZDCIK31C6w03fzNOnxVY7HnV082SbzjaK6Pf0qHfUAVutKN4JPeVVvTCav3CjD9i.tar)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
